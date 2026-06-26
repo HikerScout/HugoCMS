@@ -1,0 +1,46 @@
+services:
+  hugo-cms-frontend:
+    image: localhost/hugo-cms-frontend
+    command: /bin/bash -lc '\. .nvm/nvm.sh && npm run dev || sleep infinity'
+    networks:
+      - net-cms
+
+  hugo-cms-backend:
+    image: localhost/hugo-cms-backend
+    command: /bin/bash -lc '\. .nvm/nvm.sh && node index.js || sleep infinity'
+    volumes:
+      - hugo-web-src:/home/hugo-cms/storage:rw
+      - web-public:/home/hugo-cms/web-public:rw
+    networks:
+      - net-cms
+
+  hugo-cms-hugo:
+    image: localhost/hugo-cms-hugo
+    command: /bin/bash -c 'cd storage && hugo server --bind 0.0.0.0 --baseURL http://${INTERNAL_FQDN}/preview --port 80 --noBuildLock'
+    volumes:
+      - hugo-web-src:/home/hugo-cms/storage:rw
+    networks:
+      - net-cms
+    sysctls:
+      net.ipv4.ip_unprivileged_port_start: "80"
+  hugo-cms-nginx:
+    image: localhost/hugo-cms-nginx
+    ports:
+      - "${INTERNAL_IP}:80:80"
+    volumes:
+      - hugo-web-src:/usr/share/nginx/html:ro
+    environment:
+      - INTERNAL_FQDN=${INTERNAL_FQDN}
+    depends_on:
+      - hugo-cms-frontend
+      - hugo-cms-backend
+    networks:
+      - net-cms
+
+volumes:
+  hugo-web-src:
+  web-public:
+
+networks:
+  net-cms:
+    driver: bridge

@@ -1,0 +1,17 @@
+# HugoCMS Frontend
+FROM docker.io/library/ubuntu
+
+RUN apt update && apt upgrade -y
+RUN apt-get install curl hugo -y
+RUN useradd -m hugo-cms -s /bin/bash
+
+USER hugo-cms
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.5/install.sh | bash
+WORKDIR /home/hugo-cms/
+RUN bash -lc 'export NVM_DIR="$HOME/.nvm" && \. .nvm/nvm.sh && nvm install --lts'
+COPY backend /home/hugo-cms/
+USER root
+RUN chmod +x deploy.sh
+RUN chown -R hugo-cms:hugo-cms . && chmod -R 0755 .
+USER hugo-cms
+RUN bash -lc '\. .nvm/nvm.sh && npm install'

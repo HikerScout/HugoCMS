@@ -1,0 +1,283 @@
+.container { 
+  font-family: 'Arial', sans-serif; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+  padding: 20px; 
+  height: 100vh; 
+  box-sizing: border-box; 
+  display: flex; 
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+.headerTitle {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.mainLayout { 
+  display: flex; 
+  flex: 1; 
+  gap: 20px; 
+  margin-top: 10px; 
+  overflow: hidden; 
+  height: calc(100vh - 60px); 
+}
+
+.sidebar { 
+  width: 340px; 
+  background-color: #fff; 
+  padding: 10px; 
+  border-radius: 8px; 
+  border: 1px solid #e0e0e0; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.genericBtn { 
+  padding: 6px 12px; 
+  cursor: pointer; 
+  font-size: 13px; 
+  background-color: #4398f3;
+  color: white;
+  border: none; 
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.genericBtn:hover {
+  background-color: #255f9d;
+}
+
+.treeItem { margin-bottom: 2px; position: relative; }
+
+.treeBtn { 
+  padding: 8px; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  font-size: 15px; 
+  white-space: nowrap;
+  transition: background 0.1s;
+  user-select: none;
+  font-weight: normal;
+}
+
+.treeBtn:hover {
+  background-color: #9bd7ffaa;
+}
+
+.treeIcon { margin-right: 8px; width: 18px; display: inline-block; text-align: center; }
+.treeName { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; }
+
+.treeSub { 
+  margin-left: 16px; 
+  border-left: 1px dashed #e3e3e3; 
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.editorContainer { 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+  background-color: #fff; 
+  border-radius: 8px; 
+  border: 1px solid #e0e0e0; 
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.fileName { font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.emptyState { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: 100%; 
+  color: #888; 
+  font-size: 18px;
+  flex-direction: column;
+}
+
+.message { 
+  padding: 10px; 
+  border-radius: 4px; 
+  margin-bottom: 10px; 
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+}
+
+.message.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-color: #bee5eb;
+}
+
+.contextMenu {
+  position: absolute;
+  z-index: 1001;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  min-width: 150px;
+  display: none;
+  padding: 5px 0;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: opacity 0.1s, transform 0.1s;
+}
+
+.contextMenu.visible {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contextMenu button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.contextMenu button:hover {
+  background-color: #f0f0f0;
+}
+
+.contextMenu hr {
+  margin: 4px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.contextMenu .dangerBtn {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.contextMenu .dangerBtn:hover {
+  background-color: #ffeaea;
+}
+
+.unknownType {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f0f0;
+}
+
+.mediaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin: 20px 0px 0px 0px;
+}
+
+.mediaPreviewImage, .mediaPreviewVideo {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  color: #666;
+}
+
+.editorArea {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogBox {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 90vh;
+  overflow: hidden;
+  padding: 1rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.dialogTitle {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+}
+
+.dialogMessage {
+  margin-bottom: 24px;
+  line-height: 1.5;
+  color: #666;
+  font-size: 15px;
+}
+
+.dialogInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.dialogInput:focus {
+  border-color: #4398f3;
+  box-shadow: 0 0 0 2px rgba(67, 152, 243, 0.15);
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+}

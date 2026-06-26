@@ -1,0 +1,15 @@
+*
+!frontend/
+!frontend/**
+!backend/
+!backend/**
+!conf/
+!conf/**
+!podman/
+!podman/**
+!.gitignore
+
+node_modules/
+package-lock.json
+backend/storage/
+podman/.env

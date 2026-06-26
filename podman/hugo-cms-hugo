@@ -1,0 +1,9 @@
+# HugoCMS Frontend
+FROM docker.io/library/ubuntu
+
+RUN apt update && apt upgrade -y
+RUN apt-get install curl hugo -y
+RUN useradd -m hugo-cms -s /bin/bash
+
+USER hugo-cms
+WORKDIR /home/hugo-cms/
